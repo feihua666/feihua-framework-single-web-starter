@@ -1,6 +1,5 @@
 package com.feihua.starter.frameworksupport;
 
-import com.feihua.framework.base.modules.user.api.ApiBaseUserAuthPoService;
 import com.feihua.framework.base.modules.user.api.ApiBaseUserPoService;
 import com.feihua.framework.base.modules.user.dto.BaseUserAddParamDto;
 import com.feihua.framework.base.modules.user.dto.BaseUserAuthDto;
@@ -19,19 +18,15 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 /**
  * Created by yangwei
  * Created at 2018/7/26 22:09
  */
-@Service
+@Service("accountService")
 public class MyAccountServiceImpl extends AccountServiceImpl {
 
     @Autowired
     private ApiMiniProgramService apiMiniProgramService;
-    @Resource
-    private ApiBaseUserAuthPoService apiBaseUserAuthPoService;
     @Autowired
     private ApiBaseUserPoService apiBaseUserPoService;
     @Override
