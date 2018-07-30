@@ -4,31 +4,92 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>feihua</groupId>
+        <artifactId>feihua-parent-pom</artifactId>
+        <version>1.0.0.20180730</version>
+    </parent>
+
     <groupId>feihua</groupId>
     <artifactId>feihua-framework-single-web-starter</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0.20180730_rc</version>
     <packaging>war</packaging>
 
 
     <description>这是一个web开始使用demo，一般请fork该项目以开始使用</description>
+
+    <properties>
+        <feihua-framework-base-rest.version>1.0.0.20180730_rc</feihua-framework-base-rest.version>
+        <feihua-framework-base-service-impl.version>1.0.0.20180730_rc</feihua-framework-base-service-impl.version>
+
+        <feihua-wechat-service-impl.version>1.0.0.20180730_rc</feihua-wechat-service-impl.version>
+        <feihua-wechat-rest.version>1.0.0.20180730_rc</feihua-wechat-rest.version>
+
+        <feihua-framework-activity-service-impl.version>1.0.0.20180730_alpha</feihua-framework-activity-service-impl.version>
+        <feihua-framework-activity-rest.version>1.0.0.20180730_alpha</feihua-framework-activity-rest.version>
+
+
+    </properties>
     <dependencies>
         <!-- 基础必须添加-->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-base-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-framework-base-rest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-base-service-impl</artifactId>
+            <version>${feihua-framework-base-service-impl.version}</version>
         </dependency>
 
+        <!-- servlet 包 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- 微信支持，不需要可以不添加 -->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-wechat-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-wechat-rest.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
+            <artifactId>feihua-wechat-service-impl</artifactId>
+            <version>${feihua-wechat-service-impl.version}</version>
+        </dependency>
+        <!-- activity 支持，不需要可以不添加-->
+        <dependency>
+            <groupId>feihua</groupId>
             <artifactId>feihua-framework-activity-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-framework-activity-rest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-activity-service-impl</artifactId>
+            <version>${feihua-framework-activity-service-impl.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-orm</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <profiles>

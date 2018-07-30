@@ -22,19 +22,11 @@
           window.location.href = 'http://feihua666.ngrok.xiaomiqiu.cn/api/wxlogintestsucess.html'
       },
       error:function (res) {
+          // 如果获取当前登录用户信息失败，表明没有登录，尝试获取用户信息
+          //尝试获取用户信息
+          var userinfourl = 'http://feihua666.ngrok.xiaomiqiu.cn/api/publicplatform/getAuthUserInfo/yangwei?redirectUrl=http://feihua666.ngrok.xiaomiqiu.cn/api/wxlogintest.html'
 
-          $.ajax({
-              url:'/api/login',
-              method:'POST',
-              data:{loginType:'WX_PLATFORM',type:'yangwei'},
-              success:function (res) {
-                  // 成功则跳转
-                  window.location.href = 'http://feihua666.ngrok.xiaomiqiu.cn/api/wxlogintestsucess.html'
-              },
-              error:function (res) {
-                 //如果还不成功。说明没有被邀请，跳转到邀请页面
-              }
-          })
+          window.location.href = '/api/publicplatform/redirectToAuthAuthorizePage/yangwei?redirectUrl=' + encodeURIComponent(userinfourl)
 
       }
 
