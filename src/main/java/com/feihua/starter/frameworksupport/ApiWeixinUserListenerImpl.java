@@ -25,58 +25,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApiWeixinUserListenerImpl implements ApiWeixinUserListener{
 
-    @Autowired
-    private ApiBaseUserPoService apiBaseUserPoService;
-    @Autowired
-    private ApiBaseUserAuthPoService apiBaseUserAuthPoService;
-    @Autowired
-    private ApiWeixinUserPoService apiWeixinUserPoService;
 
+    @Autowired
+    private UserAuthHelper UserAuthHelper;
     @Override
     public void onAddWexinUser(WeixinUserDto weixinUserDto) {
-
+        UserAuthHelper.generateUserAuth(weixinUserDto);
     }
 
-    public BaseUserPo generateUserAuth(WeixinUserDto weixinUserDto) {
-
-
-        String loginType = null;
-        if(DictEnum.WeixinType.miniprogram.name().equals(weixinUserDto.getType())){
-            loginType = ShiroUser.LoginType.WX_MINIPROGRAM.name();
-        }else if(DictEnum.WeixinType.publicplatform.name().equals(weixinUserDto.getType())){
-            loginType = ShiroUser.LoginType.WX_PLATFORM.name();
-        }
-
-        // 如果已经存在直接返回
-        BaseUserAuthDto baseUserAuthDto = apiBaseUserAuthPoService.selectByUserIdAndType(weixinUserDto.getOpenid(),loginType);
-        if (baseUserAuthDto != null) {
-            return apiBaseUserPoService.selectByPrimaryKeySimple(baseUserAuthDto.getUserId());
-        }
-
-
-        BaseUserPo baseUserPo = new BaseUserPo();
-        baseUserPo.setNickname(weixinUserDto.getNickname());
-        baseUserPo.setPhoto(weixinUserDto.getHeadImageUrl());
-        baseUserPo.setLocked(BasePo.YesNo.N.name());
-        baseUserPo.setGender(CommonConstants.genderMapping.get(weixinUserDto.getGender()));
-        apiBaseUserPoService.preInsert(baseUserPo,BasePo.DEFAULT_USER_ID);
-        baseUserPo = apiBaseUserPoService.insertSimple(baseUserPo);
-
-        BaseUserAuthPo baseUserAuthPo = new BaseUserAuthPo();
-        baseUserAuthPo.setUserId(baseUserPo.getId());
-        baseUserAuthPo.setIdentityType(loginType);
-        baseUserAuthPo.setIdentifier(weixinUserDto.getOpenid());
-        baseUserAuthPo.setVerified(BasePo.YesNo.Y.name());
-        apiBaseUserAuthPoService.preInsert(baseUserAuthPo,BasePo.DEFAULT_USER_ID);
-        apiBaseUserAuthPoService.insertSimple(baseUserAuthPo);
-
-        //回写userid
-        WeixinUserPo weixinUserPo = new WeixinUserPo();
-        weixinUserPo.setId(weixinUserDto.getId());
-        weixinUserPo.setUserId(baseUserPo.getId());
-        apiWeixinUserPoService.preUpdate(weixinUserPo,BasePo.DEFAULT_USER_ID);
-        apiWeixinUserPoService.updateByPrimaryKeySelective(weixinUserPo);
-
-        return baseUserPo;
-    }
 }
