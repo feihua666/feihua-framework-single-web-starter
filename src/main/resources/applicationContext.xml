@@ -17,6 +17,8 @@
     </context:component-scan>
 
     <import resource="classpath:applicationContext-base-rest.xml"/>
+
+    <import resource="classpath:applicationContext-service.xml"/>
     <!-- 微信相关，不用可以不添加 -->
     <import resource="classpath:applicationContext-wechat-service.xml"/>
 
