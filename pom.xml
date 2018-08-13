@@ -7,51 +7,40 @@
     <parent>
         <groupId>feihua</groupId>
         <artifactId>feihua-parent-pom</artifactId>
-        <version>1.0.1.20180802</version>
+        <version>1.0.0.2018-08-13</version>
     </parent>
 
     <groupId>feihua</groupId>
     <artifactId>feihua-framework-single-web-starter</artifactId>
-    <version>1.1.0.20180810_rc</version>
     <packaging>war</packaging>
 
 
     <description>这是一个web开始使用demo，一般请fork该项目以开始使用</description>
 
     <properties>
-        <feihua-framework-base-rest.version>1.1.0.20180809_rc</feihua-framework-base-rest.version>
-        <feihua-framework-base-service-impl.version>1.0.1.20180809_rc</feihua-framework-base-service-impl.version>
 
-        <feihua-wechat-service-impl.version>1.0.0.20180730_rc</feihua-wechat-service-impl.version>
-        <feihua-wechat-rest.version>1.0.0.20180730_rc</feihua-wechat-rest.version>
-
-        <feihua-framework-activity-service-impl.version>1.0.0.20180730_alpha</feihua-framework-activity-service-impl.version>
-        <feihua-framework-activity-rest.version>1.0.0.20180730_alpha</feihua-framework-activity-rest.version>
-
-        <feihua-utils.version>1.1.1.20180810_beta</feihua-utils.version>
-        <feihua.framework.shiro.version>1.2.0.20180810_rc</feihua.framework.shiro.version>
     </properties>
     <dependencies>
         <!-- 基础必须添加-->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-base-rest</artifactId>
-            <version>${feihua-framework-base-rest.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-base-service-impl</artifactId>
-            <version>${feihua-framework-base-service-impl.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-utils</artifactId>
-            <version>${feihua-utils.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-shiro</artifactId>
-            <version>${feihua.framework.shiro.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <!-- servlet 包 -->
         <dependency>
@@ -73,23 +62,23 @@
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-wechat-rest</artifactId>
-            <version>${feihua-wechat-rest.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-wechat-service-impl</artifactId>
-            <version>${feihua-wechat-service-impl.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <!-- activity 支持，不需要可以不添加-->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-activity-rest</artifactId>
-            <version>${feihua-framework-activity-rest.version}</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-activity-service-impl</artifactId>
-            <version>${feihua-framework-activity-service-impl.version}</version>
+            <version>${feihua-framework.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-core</artifactId>
