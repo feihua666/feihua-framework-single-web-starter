@@ -30,7 +30,7 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
     @Autowired
     private ApiBaseUserPoService apiBaseUserPoService;
     @Override
-    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, ShiroUser.LoginType loginType) {
+    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, ShiroUser.LoginType loginType,String loginClient) {
         AuthenticationToken token = null;
         switch (loginType){
             // 小程序，支持多个小程序

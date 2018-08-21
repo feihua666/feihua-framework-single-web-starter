@@ -7,7 +7,7 @@
     <parent>
         <groupId>feihua</groupId>
         <artifactId>feihua-parent-pom</artifactId>
-        <version>1.0.0.2018-08-13</version>
+        <version>1.1.0.2018-08-21</version>
     </parent>
 
     <groupId>feihua</groupId>
@@ -21,6 +21,11 @@
 
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
         <!-- 基础必须添加-->
         <dependency>
             <groupId>feihua</groupId>
@@ -105,7 +110,7 @@
                 <!--数据源a的配置 a为默认数据源-->
                 <default.jdbc.type>mysql</default.jdbc.type>
                 <default.jdbc.driver>com.mysql.jdbc.Driver</default.jdbc.driver>
-                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true</default.jdbc.url>
+                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=UTC</default.jdbc.url>
                 <default.jdbc.username>root</default.jdbc.username>
                 <default.jdbc.password>root</default.jdbc.password>
                 <!--redis 配置-->
