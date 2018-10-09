@@ -7,12 +7,12 @@
     <parent>
         <groupId>feihua</groupId>
         <artifactId>feihua-framework</artifactId>
-        <version>1.0.0.2018-08-22</version>
+        <version>1.1.0.2018-10-09</version>
     </parent>
 
     <artifactId>feihua-framework-single-web-starter</artifactId>
     <packaging>war</packaging>
-    <version>1.0.0.2018-08-22</version>
+    <version>1.1.0.2018-10-09</version>
 
 
     <description>这是一个web开始使用demo，一般请fork该项目以开始使用</description>
@@ -103,7 +103,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <!-- uploadfile.properties -->
                 <file.position>D:/base-rest/images</file.position>
+                <!-- logback.xml -->
                 <web.log.path>e:/agency-framework-log</web.log.path>
                 <web.log.level>TRANCE</web.log.level>
 
@@ -117,6 +119,14 @@
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
                 <redis.keyPrefix>feihuaframework</redis.keyPrefix>
+                <!-- mini_program.properties -->
+                <miniprogram.yangwei.token>yangwei</miniprogram.yangwei.token>
+                <miniprogram.yangwei.appID>wx66be83d17ee00f28</miniprogram.yangwei.appID>
+                <miniprogram.yangwei.appsecret>3ae3d0bf6f9f0c3f1bd37a0d20999c39</miniprogram.yangwei.appsecret>
+                <!-- public_platform.properties -->
+                <publicplatform.yangwei.token>yangwei</publicplatform.yangwei.token>
+                <publicplatform.yangwei.appID>wx72e45368961b5b4a</publicplatform.yangwei.appID>
+                <publicplatform.yangwei.appsecret>1bd208154175649692e58bf47f0122e0</publicplatform.yangwei.appsecret>
             </properties>
         </profile>
     </profiles>
