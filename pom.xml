@@ -4,31 +4,96 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>feihua</groupId>
+    <parent>
+        <groupId>feihua</groupId>
+        <artifactId>feihua-framework</artifactId>
+        <version>1.1.0.2018-10-09</version>
+    </parent>
+
     <artifactId>feihua-framework-single-web-starter</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <version>1.1.0.2018-10-09</version>
 
 
     <description>这是一个web开始使用demo，一般请fork该项目以开始使用</description>
+
+    <properties>
+
+    </properties>
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
         <!-- 基础必须添加-->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-base-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-base-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-utils</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-shiro</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <!-- servlet 包 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- 微信支持，不需要可以不添加 -->
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-wechat-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>feihua</groupId>
+            <artifactId>feihua-wechat-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <!-- activity 支持，不需要可以不添加-->
+        <dependency>
+            <groupId>feihua</groupId>
             <artifactId>feihua-framework-activity-rest</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-activity-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-orm</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <profiles>
@@ -38,20 +103,30 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <!-- uploadfile.properties -->
                 <file.position>D:/base-rest/images</file.position>
+                <!-- logback.xml -->
                 <web.log.path>e:/agency-framework-log</web.log.path>
                 <web.log.level>TRANCE</web.log.level>
 
                 <!--数据源a的配置 a为默认数据源-->
                 <default.jdbc.type>mysql</default.jdbc.type>
                 <default.jdbc.driver>com.mysql.jdbc.Driver</default.jdbc.driver>
-                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true</default.jdbc.url>
+                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=UTC</default.jdbc.url>
                 <default.jdbc.username>root</default.jdbc.username>
                 <default.jdbc.password>root</default.jdbc.password>
                 <!--redis 配置-->
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
                 <redis.keyPrefix>feihuaframework</redis.keyPrefix>
+                <!-- mini_program.properties -->
+                <miniprogram.yangwei.token>yangwei</miniprogram.yangwei.token>
+                <miniprogram.yangwei.appID>wx66be83d17ee00f28</miniprogram.yangwei.appID>
+                <miniprogram.yangwei.appsecret>3ae3d0bf6f9f0c3f1bd37a0d20999c39</miniprogram.yangwei.appsecret>
+                <!-- public_platform.properties -->
+                <publicplatform.yangwei.token>yangwei</publicplatform.yangwei.token>
+                <publicplatform.yangwei.appID>wx72e45368961b5b4a</publicplatform.yangwei.appID>
+                <publicplatform.yangwei.appsecret>1bd208154175649692e58bf47f0122e0</publicplatform.yangwei.appsecret>
             </properties>
         </profile>
     </profiles>
