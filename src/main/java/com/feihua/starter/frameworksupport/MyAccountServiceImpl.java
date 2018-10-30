@@ -12,11 +12,16 @@ import com.feihua.utils.properties.PropertiesUtils;
 import com.feihua.wechat.ParamsDto;
 import com.feihua.wechat.miniprogram.api.ApiMiniProgramService;
 import com.feihua.wechat.miniprogram.dto.LoginCredentialsDto;
+import com.feihua.wechat.publicplatform.api.ApiWeixinAccountPoService;
+import com.feihua.wechat.publicplatform.dto.WeixinAccountDto;
+import com.feihua.wechat.publicplatform.po.WeixinAccountPo;
 import feihua.jdbc.api.pojo.BasePo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by yangwei
@@ -29,10 +34,13 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
     private ApiMiniProgramService apiMiniProgramService;
     @Autowired
     private ApiBaseUserPoService apiBaseUserPoService;
+    @Autowired
+    private ApiWeixinAccountPoService apiWeixinAccountPoService;
+
     @Override
-    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, ShiroUser.LoginType loginType,String loginClient) {
+    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, ShiroUser.LoginType loginType, String loginClient) {
         AuthenticationToken token = null;
-        switch (loginType){
+        switch (loginType) {
             // 小程序，支持多个小程序
             case WX_MINIPROGRAM:
 
@@ -43,14 +51,27 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
                 String photo = servletRequest.getParameter("photo");
                 String gender = servletRequest.getParameter("gender");
 
+                WeixinAccountPo weixinPo = new WeixinAccountPo();
+                weixinPo.setDelFlag(BasePo.YesNo.N.name());
+                weixinPo.setStatus(BasePo.YesNo.Y.name());
+                weixinPo.setWhich(type);
+                weixinPo.setType("weixin_miniprogram");
+                List<WeixinAccountDto> weixinAccountDtos = apiWeixinAccountPoService.selectList(weixinPo);
+
                 ParamsDto paramsDto = new ParamsDto();
-                paramsDto.setAppId(PropertiesUtils.getProperty("miniprogram."+ type +".appid"));
-                paramsDto.setSecret(PropertiesUtils.getProperty("miniprogram."+ type +".secret"));
-                LoginCredentialsDto credentialsDto = apiMiniProgramService.fetchLoginCredentials(code,paramsDto);
+                if (weixinAccountDtos != null && weixinAccountDtos.size() > 0) {
+                    paramsDto.setAppId(weixinAccountDtos.get(0).getAppid());
+                    paramsDto.setSecret(weixinAccountDtos.get(0).getAppsecret());
+                } else {
+                    paramsDto.setAppId(PropertiesUtils.getProperty("miniprogram." + type + ".appid"));
+                    paramsDto.setSecret(PropertiesUtils.getProperty("miniprogram." + type + ".secret"));
+                }
+
+                LoginCredentialsDto credentialsDto = apiMiniProgramService.fetchLoginCredentials(code, paramsDto);
                 WxMiniProgramToken openidToken = new WxMiniProgramToken();
                 openidToken.setOpenid(credentialsDto.getOpenid());
 
-                BaseUserAuthDto userAuthDto =  super.findUserAuthByToken(openidToken);
+                BaseUserAuthDto userAuthDto = super.findUserAuthByToken(openidToken);
                 if (userAuthDto == null) {
                     BaseUserAddParamDto baseUserAddParamDto = new BaseUserAddParamDto();
                     baseUserAddParamDto.setIdentifier(openidToken.getOpenid());
@@ -69,7 +90,7 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
             case WX_PLATFORM:
                 String which = servletRequest.getParameter("type");
                 // 该key是提前放好的，请调用相关接口获取openid，并设置该key
-                String openid = (String) SecurityUtils.getSubject().getSession().getAttribute("publickplatform_openid_"+which);
+                String openid = (String) SecurityUtils.getSubject().getSession().getAttribute("publickplatform_openid_" + which);
                 WxPlatformToken wxPlatformToken = new WxPlatformToken();
                 wxPlatformToken.setOpenid(openid);
                 token = wxPlatformToken;
