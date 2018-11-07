@@ -35,9 +35,9 @@ public class UserAuthHelper {
 
         String loginType = null;
         if(DictEnum.WeixinType.miniprogram.name().equals(weixinUserDto.getType())){
-            loginType = ShiroUser.LoginType.WX_MINIPROGRAM.name();
+            loginType = DictEnum.LoginType.WX_MINIPROGRAM.name();
         }else if(DictEnum.WeixinType.publicplatform.name().equals(weixinUserDto.getType())){
-            loginType = ShiroUser.LoginType.WX_PLATFORM.name();
+            loginType = DictEnum.LoginType.WX_PLATFORM.name();
         }
 
         // 如果已经存在直接返回
