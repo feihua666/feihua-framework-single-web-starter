@@ -63,6 +63,18 @@
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- 消息支持 -->
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-message-rest</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-message-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
         <!-- 微信支持，不需要可以不添加 -->
         <dependency>
             <groupId>feihua</groupId>
@@ -112,13 +124,42 @@
                 <!--数据源a的配置 a为默认数据源-->
                 <default.jdbc.type>mysql</default.jdbc.type>
                 <default.jdbc.driver>com.mysql.jdbc.Driver</default.jdbc.driver>
-                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=UTC</default.jdbc.url>
+                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8</default.jdbc.url>
                 <default.jdbc.username>root</default.jdbc.username>
                 <default.jdbc.password>root</default.jdbc.password>
                 <!--redis 配置-->
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
                 <redis.keyPrefix>feihuaframework</redis.keyPrefix>
+                <!-- mini_program.properties -->
+                <miniprogram.yangwei.token>yangwei</miniprogram.yangwei.token>
+                <miniprogram.yangwei.appID>wx66be83d17ee00f28</miniprogram.yangwei.appID>
+                <miniprogram.yangwei.appsecret>3ae3d0bf6f9f0c3f1bd37a0d20999c39</miniprogram.yangwei.appsecret>
+                <!-- public_platform.properties -->
+                <publicplatform.yangwei.token>yangwei</publicplatform.yangwei.token>
+                <publicplatform.yangwei.appID>wx72e45368961b5b4a</publicplatform.yangwei.appID>
+                <publicplatform.yangwei.appsecret>1bd208154175649692e58bf47f0122e0</publicplatform.yangwei.appsecret>
+            </properties>
+        </profile>
+        <profile>
+            <id>39.104.146.45</id>
+            <properties>
+                <!-- uploadfile.properties -->
+                <file.position>/usr/local/data/framework-starter/data/file</file.position>
+                <!-- logback.xml -->
+                <web.log.path>/usr/local/data/framework-starter/tomcat-logs</web.log.path>
+                <web.log.level>INFO</web.log.level>
+
+                <!--数据源a的配置 a为默认数据源-->
+                <default.jdbc.type>mysql</default.jdbc.type>
+                <default.jdbc.driver>com.mysql.jdbc.Driver</default.jdbc.driver>
+                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8</default.jdbc.url>
+                <default.jdbc.username>root</default.jdbc.username>
+                <default.jdbc.password>jlks82lsUH@@</default.jdbc.password>
+                <!--redis 配置-->
+                <redis.host>127.0.0.1</redis.host>
+                <redis.port>6379</redis.port>
+                <redis.keyPrefix>feihuaframework-starter</redis.keyPrefix>
                 <!-- mini_program.properties -->
                 <miniprogram.yangwei.token>yangwei</miniprogram.yangwei.token>
                 <miniprogram.yangwei.appID>wx66be83d17ee00f28</miniprogram.yangwei.appID>

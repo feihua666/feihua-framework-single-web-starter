@@ -23,5 +23,6 @@
     <!-- 微信相关，不用可以不添加 -->
     <import resource="classpath:springWebmvc-wechat-rest.xml"/>
     <import resource="classpath:springWebmvc-activity-rest.xml"/>
+    <import resource="classpath:springWebmvc-message-rest.xml"/>
 
 </beans>

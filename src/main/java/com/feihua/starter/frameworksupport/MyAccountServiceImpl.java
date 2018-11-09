@@ -4,6 +4,7 @@ import com.feihua.framework.base.modules.user.api.ApiBaseUserPoService;
 import com.feihua.framework.base.modules.user.dto.BaseUserAddParamDto;
 import com.feihua.framework.base.modules.user.dto.BaseUserAuthDto;
 import com.feihua.framework.base.modules.user.po.BaseUserPo;
+import com.feihua.framework.constants.DictEnum;
 import com.feihua.framework.rest.service.AccountServiceImpl;
 import com.feihua.framework.shiro.pojo.ShiroUser;
 import com.feihua.framework.shiro.pojo.token.WxMiniProgramToken;
@@ -38,7 +39,7 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
     private ApiWeixinAccountPoService apiWeixinAccountPoService;
 
     @Override
-    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, ShiroUser.LoginType loginType, String loginClient) {
+    public AuthenticationToken createToken(javax.servlet.ServletRequest servletRequest, DictEnum.LoginType loginType, String loginClient) {
         AuthenticationToken token = null;
         switch (loginType) {
             // 小程序，支持多个小程序
@@ -75,7 +76,7 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
                 if (userAuthDto == null) {
                     BaseUserAddParamDto baseUserAddParamDto = new BaseUserAddParamDto();
                     baseUserAddParamDto.setIdentifier(openidToken.getOpenid());
-                    baseUserAddParamDto.setIdentityType(ShiroUser.LoginType.WX_MINIPROGRAM.name());
+                    baseUserAddParamDto.setIdentityType(DictEnum.LoginType.WX_MINIPROGRAM.name());
                     baseUserAddParamDto.setCurrentUserId(BasePo.DEFAULT_USER_ID);
                     baseUserAddParamDto.setNickname(nickname);
                     baseUserAddParamDto.setPhoto(photo);
