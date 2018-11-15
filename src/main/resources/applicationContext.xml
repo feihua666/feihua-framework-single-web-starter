@@ -25,6 +25,8 @@
     <import resource="classpath:applicationContext-activity-service.xml"/>
     <!--消息支持-->
     <import resource="classpath:applicationContext-message-service.xml"/>
+    <!--cms支持-->
+    <import resource="classpath:applicationContext-cms-service.xml"/>
 
     <!-- 以下是配置文件引用 -->
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
