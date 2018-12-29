@@ -1,3 +1,6 @@
+import com.feihua.framework.base.modules.user.po.BaseUserPo;
+import feihua.jdbc.api.pojo.BasePo;
+
 import java.io.*;
 
 /**
@@ -6,8 +9,9 @@ import java.io.*;
  */
 public class Test {
     public static void main(String[] args) {
-        pdf2swf(new File("d:/test/6f1293d8-022a-4414-b4ad-7729cd58ecbc-pdf.pdf"),
-                "d:/test/6f1293d8-022a-4414-b4ad-7729cd58ecbc-swf.swf");
+        /*pdf2swf(new File("d:/test/6f1293d8-022a-4414-b4ad-7729cd58ecbc-pdf.pdf"),
+                "d:/test/6f1293d8-022a-4414-b4ad-7729cd58ecbc-swf.swf");*/
+
     }
 
     public static boolean pdf2swf(File sourceFile, String targetFileAbsolutePath) {

@@ -1,5 +1,6 @@
 package com.feihua.starter.service.modules.leave.dto;
 
+import feihua.jdbc.api.pojo.BaseDbDto;
 import feihua.jdbc.api.pojo.BaseDto;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  *
  * @mbg.generated 2018-04-11 14:57:50
 */
-public class OaLeaveDto extends BaseDto {
+public class OaLeaveDto extends BaseDbDto<String> {
     private String id;
 
     private String processInstanceId;
