@@ -6,6 +6,7 @@ import com.feihua.framework.base.modules.user.dto.BaseUserAuthDto;
 import com.feihua.framework.base.modules.user.po.BaseUserPo;
 import com.feihua.framework.constants.DictEnum;
 import com.feihua.framework.rest.service.AccountServiceImpl;
+import com.feihua.framework.shiro.LoginClient;
 import com.feihua.framework.shiro.pojo.ShiroUser;
 import com.feihua.framework.shiro.pojo.token.WxMiniProgramToken;
 import com.feihua.framework.shiro.pojo.token.WxPlatformToken;
@@ -22,6 +23,8 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.util.List;
 
 /**
@@ -98,5 +101,16 @@ public class MyAccountServiceImpl extends AccountServiceImpl {
                 break;
         }
         return token;
+    }
+
+    @Override
+    public boolean validateCaptchaWhenLogin(ServletRequest servletRequest, ServletResponse servletResponse) {
+        LoginClient loginClient = super.resolveLoginClient(servletRequest);
+        LoginClient pcLoginClient = new LoginClient();
+        pcLoginClient.setClientType(DictEnum.LoginClient.pc.name());
+        if(pcLoginClient.equals(loginClient)){
+            return true;
+        }
+       return false;
     }
 }
