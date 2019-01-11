@@ -5,6 +5,7 @@ package com.feihua.starter.web.modules.leave.mvc;
 import com.feihua.framework.activity.api.ApiActivitiBusinessService;
 import com.feihua.framework.activity.api.ApiActivitiTaskService;
 import com.feihua.framework.activity.dto.CompleteTaskParamDto;
+import com.feihua.framework.log.comm.annotation.OperationLog;
 import com.feihua.framework.rest.ResponseJsonRender;
 import com.feihua.framework.rest.interceptor.RepeatFormValidator;
 import com.feihua.framework.rest.modules.common.mvc.BaseController;
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scripting.bsh.BshScriptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +62,7 @@ public class OaLeaveController extends BaseController {
      * 添加
      * @return
      */
+    @OperationLog(operation = "请假",content = "添加")
     @RepeatFormValidator
     @RequiresPermissions("oa:leave:add")
     @RequestMapping(value = "/leave", method = RequestMethod.POST)
@@ -100,6 +103,7 @@ public class OaLeaveController extends BaseController {
      * 删除
      * @return
      */
+    @OperationLog(operation = "请假",content = "根据ID删除")
     @RequiresPermissions("oa:leave:delete")
     @RequestMapping(value = "/leave/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteOaLeave(@PathVariable String id){
@@ -117,6 +121,7 @@ public class OaLeaveController extends BaseController {
      * 更新
      * @return
      */
+    @OperationLog(operation = "请假",content = "根据ID更新")
     @RequiresPermissions("oa:leave:update")
     @RequestMapping(value = "/leave/{id}", method = RequestMethod.PUT)
     public ResponseEntity updateOaLeave(@PathVariable String id,UpdateLeaveFormDto updateLeaveFormDto){
@@ -153,6 +158,7 @@ public class OaLeaveController extends BaseController {
      *
      * @return
      */
+    @OperationLog(operation = "请假",content = "根据ID查询")
     @RequiresPermissions("oa:leave:getbyId")
     @RequestMapping(value = "/leave/{id}", method = RequestMethod.GET)
     public ResponseEntity findOaLeave(@PathVariable String id) {
@@ -166,6 +172,7 @@ public class OaLeaveController extends BaseController {
      *
      * @return
      */
+    @OperationLog(operation = "请假",content = "查询列表")
     @RequiresPermissions("oa:leave:list")
     @RequestMapping(value = "/leaves", method = RequestMethod.GET)
     public ResponseEntity listOaLeave(SearchLeavesConditionDto dto){
