@@ -32,9 +32,20 @@
             <artifactId>feihua-framework-base-rest</artifactId>
             <version>${feihua-framework.version}</version>
         </dependency>
+
         <dependency>
             <groupId>feihua</groupId>
             <artifactId>feihua-framework-base-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-log-rest</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-log-service-impl</artifactId>
             <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
@@ -143,12 +154,12 @@
                 <file.position>D:/base-rest/images</file.position>
                 <!-- logback.xml -->
                 <web.log.path>e:/agency-framework-log</web.log.path>
-                <web.log.level>TRACE</web.log.level>
+                <web.log.level>DEBUG</web.log.level>
 
                 <!--数据源a的配置 a为默认数据源-->
                 <default.jdbc.type>mysql</default.jdbc.type>
                 <default.jdbc.driver>com.mysql.jdbc.Driver</default.jdbc.driver>
-                <default.jdbc.url>jdbc:mysql://localhost/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8</default.jdbc.url>
+                <default.jdbc.url>jdbc:mysql://10.1.65.100/feihua-framework-base?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8</default.jdbc.url>
                 <default.jdbc.username>root</default.jdbc.username>
                 <default.jdbc.password>root</default.jdbc.password>
                 <!--redis 配置-->

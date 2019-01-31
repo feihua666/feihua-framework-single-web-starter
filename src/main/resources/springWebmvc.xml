@@ -26,5 +26,6 @@
     <import resource="classpath:springWebmvc-message-rest.xml"/>
     <import resource="classpath:springWebmvc-cms-web.xml"/>
     <import resource="classpath:springWebmvc-spider-rest.xml"/>
-
+    <import resource="classpath:springWebmvc-log-rest.xml"/>
+    <import resource="classpath:applicationContext-log-service.xml"/>
 </beans>

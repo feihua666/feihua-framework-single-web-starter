@@ -15,9 +15,7 @@
     <context:component-scan  use-default-filters="false" base-package="com.feihua.starter.service.impl,com.feihua.starter.frameworksupport">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
-
     <import resource="classpath:applicationContext-base-rest.xml"/>
-
     <import resource="classpath:applicationContext-service.xml"/>
     <!-- 微信相关，不用可以不添加 -->
     <import resource="classpath:applicationContext-wechat-service.xml"/>
@@ -29,6 +27,8 @@
     <import resource="classpath:applicationContext-cms-service.xml"/>
     <!-- spider 支持 -->
     <import resource="classpath:applicationContext-spider-service.xml"/>
+    <import resource="classpath:applicationContext-log-service.xml"/>
+
 
     <!-- 以下是配置文件引用 -->
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
