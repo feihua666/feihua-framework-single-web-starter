@@ -7,12 +7,12 @@
     <parent>
         <groupId>feihua</groupId>
         <artifactId>feihua-framework</artifactId>
-        <version>1.1.0.2018-10-09</version>
+        <version>1.0.0.2019-02-26</version>
     </parent>
 
     <artifactId>feihua-framework-single-web-starter</artifactId>
     <packaging>war</packaging>
-    <version>1.1.0.2018-10-09</version>
+    <version>1.0.0.2019-02-26</version>
 
 
     <description>这是一个web开始使用demo，一般请fork该项目以开始使用</description>
