@@ -17,7 +17,14 @@
     <context:component-scan  use-default-filters="false" base-package="com.feihua.starter.service.impl,com.feihua.starter.frameworksupport">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
-
+    <!-- 微信授权的匿名 -->
+    <bean class="com.feihua.framework.shiro.DefaultAnonymousFilterChainDefinitions">
+        <property name="filterChainDefinitions">
+            <value>
+                /publicplatform/** = anon
+            </value>
+        </property>
+    </bean>
     <import resource="classpath:applicationContext-base-rest.xml"/>
 
     <import resource="classpath:applicationContext-service.xml"/>
