@@ -6,7 +6,6 @@ import com.feihua.framework.base.modules.user.dto.BaseUserAuthDto;
 import com.feihua.framework.base.modules.user.po.BaseUserAuthPo;
 import com.feihua.framework.base.modules.user.po.BaseUserPo;
 import com.feihua.framework.constants.DictEnum;
-import com.feihua.framework.shiro.pojo.ShiroUser;
 import com.feihua.wechat.CommonConstants;
 import com.feihua.wechat.common.api.ApiWeixinUserPoService;
 import com.feihua.wechat.common.dto.WeixinUserDto;
@@ -38,11 +37,20 @@ public class UserAuthHelper {
             loginType = DictEnum.LoginType.WX_MINIPROGRAM.name();
         }else if(DictEnum.WeixinType.publicplatform.name().equals(weixinUserDto.getType())){
             loginType = DictEnum.LoginType.WX_PLATFORM.name();
+
         }
 
         // 如果已经存在直接返回
-        BaseUserAuthDto baseUserAuthDto = apiBaseUserAuthPoService.selectByUserIdAndType(weixinUserDto.getOpenid(),loginType);
+        BaseUserAuthDto baseUserAuthDto = apiBaseUserAuthPoService.selectByIdentifierAndType(weixinUserDto.getOpenid(),loginType);
         if (baseUserAuthDto != null) {
+            // 更新用户信息，头像昵称等
+            BaseUserPo baseUserPo = new BaseUserPo();
+            baseUserPo.setNickname(weixinUserDto.getNickname());
+            baseUserPo.setPhoto(weixinUserDto.getHeadImageUrl());
+            baseUserPo.setGender(CommonConstants.genderMapping.get(weixinUserDto.getGender()));
+            baseUserPo.setId(baseUserAuthDto.getUserId());
+            apiBaseUserPoService.updateByPrimaryKeySelective(baseUserPo);
+
             return apiBaseUserPoService.selectByPrimaryKeySimple(baseUserAuthDto.getUserId());
         }
 
