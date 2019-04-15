@@ -33,4 +33,9 @@ public class ApiWeixinUserListenerImpl implements ApiWeixinUserListener{
         UserAuthHelper.generateUserAuth(weixinUserDto);
     }
 
+    @Override
+    public void onUpdateWexinUser(WeixinUserDto weixinUserDto) {
+        UserAuthHelper.generateUserAuth(weixinUserDto);
+    }
+
 }
