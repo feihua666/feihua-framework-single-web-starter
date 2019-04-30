@@ -38,6 +38,8 @@
     <import resource="classpath:applicationContext-cms-service.xml"/>
     <!-- spider 支持 -->
     <import resource="classpath:applicationContext-spider-service.xml"/>
+    <import resource="classpath:applicationContext-scheduler-service.xml"/>
+    <import resource="classpath:applicationContext-statistic-service.xml"/>
 
 
     <!-- 以下是配置文件引用 -->

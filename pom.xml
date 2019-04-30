@@ -87,6 +87,17 @@
             <artifactId>feihua-framework-message-service-impl</artifactId>
             <version>${feihua-framework.version}</version>
         </dependency>
+        <!-- 任务计划支持 -->
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-scheduler-rest</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-scheduler-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
         <!-- 微信支持，不需要可以不添加 -->
         <dependency>
             <groupId>feihua</groupId>
@@ -130,6 +141,18 @@
                     <groupId>org.springframework</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- 统计模块 -->
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-statistic-rest</artifactId>
+            <version>${feihua-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>feihua</groupId>
+            <artifactId>feihua-framework-statistic-service-impl</artifactId>
+            <version>${feihua-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>com.ctrip.framework.apollo</groupId>
