@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.ctrip.com/schema/apollo http://www.ctrip.com/schema/apollo.xsd"
 >
-    <apollo:config namespaces="jdbc-default,alioss,redis,shiro,uploadfile"/>
+    <apollo:config namespaces="jdbc-default,redis,shiro,scheduler"/>
     <!-- 定义扫描的包路径 -->
     <context:component-scan  use-default-filters="false" base-package="com.feihua.starter.service.impl,com.feihua.starter.frameworksupport">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>

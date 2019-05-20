@@ -29,13 +29,13 @@ public class ApiWeixinUserListenerImpl implements ApiWeixinUserListener{
     @Autowired
     private UserAuthHelper UserAuthHelper;
     @Override
-    public void onAddWexinUser(WeixinUserDto weixinUserDto) {
-        UserAuthHelper.generateUserAuth(weixinUserDto);
+    public void onAddWexinUser(WeixinUserDto weixinUserDto,String fromClientId) {
+        UserAuthHelper.generateUserAuth(weixinUserDto,fromClientId);
     }
 
     @Override
-    public void onUpdateWexinUser(WeixinUserDto weixinUserDto) {
-        UserAuthHelper.generateUserAuth(weixinUserDto);
+    public void onUpdateWexinUser(WeixinUserDto weixinUserDto,String fromClientId) {
+        UserAuthHelper.generateUserAuth(weixinUserDto,fromClientId);
     }
 
 }

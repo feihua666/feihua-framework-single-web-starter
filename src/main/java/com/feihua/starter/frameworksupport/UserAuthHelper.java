@@ -29,7 +29,7 @@ public class UserAuthHelper {
     @Autowired
     private ApiWeixinUserPoService apiWeixinUserPoService;
 
-    public BaseUserPo generateUserAuth(WeixinUserDto weixinUserDto) {
+    public BaseUserPo generateUserAuth(WeixinUserDto weixinUserDto,String fromClientId) {
 
 
         String loginType = null;
@@ -60,6 +60,7 @@ public class UserAuthHelper {
         baseUserPo.setPhoto(weixinUserDto.getHeadImageUrl());
         baseUserPo.setLocked(BasePo.YesNo.N.name());
         baseUserPo.setGender(CommonConstants.genderMapping.get(weixinUserDto.getGender()));
+        baseUserPo.setFromClientId(fromClientId);
         apiBaseUserPoService.preInsert(baseUserPo,BasePo.DEFAULT_USER_ID);
         baseUserPo = apiBaseUserPoService.insertSimple(baseUserPo);
 

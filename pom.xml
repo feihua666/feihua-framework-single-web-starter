@@ -154,6 +154,7 @@
             <artifactId>feihua-framework-statistic-service-impl</artifactId>
             <version>${feihua-framework.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.ctrip.framework.apollo</groupId>
             <artifactId>apollo-client</artifactId>
