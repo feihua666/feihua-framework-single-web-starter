@@ -95,7 +95,7 @@
     </logger>
     <!-- 日志级别 -->
     <root>
-        <level value="${logback.level}" />
+        <level value="INFO" />
         <appender-ref ref="console" />
         <appender-ref ref="info" />
         <appender-ref ref="error" />
